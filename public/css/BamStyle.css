@@ -34,18 +34,19 @@ body
 	border-radius: 5px;
 }
 
+form
+{
+	border-style: none;
+	background-color: #FF5000;
+	padding: 3px 5px 3px 5px;
+}
+
 footer
 {
 	text-align: center;
 	font-size: 12px;
 	padding-top: 10px;
 }
-
-
-
-
-
-
 
 
 
