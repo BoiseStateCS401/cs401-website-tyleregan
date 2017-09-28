@@ -54,8 +54,18 @@ footer
 	border-width: 2px;
 	border-radius: 15px;
 	background-color: #F1632A;
-	padding: 5px;
+	padding: 5px 5px 5px 5px;
 	margin: 0px 4px 0px 4px;
+}
+
+#HomePic a
+{
+	padding-left: 5%;
+	padding-right: 5%;
+}
+#HomePic a img
+{
+	border-radius: 15px;
 }
 
 .NavBar
