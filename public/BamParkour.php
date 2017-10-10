@@ -27,22 +27,34 @@
         Majors
       </p>
     </header>*/
-
   $thisPage = "BamRules";
   require_once('BamHead.php');
   require_once('BamNavBar.php');
   require_once('BamHeader.php');
   /*require_once('BamForumNavBar.php');*/
 ?>
-
-    <section id="HomePic">
-      <a href="BamActivities.php">
-      <img src="images/BamActivities.jpg" width="40%" height="30%"></a> &ensp;
-      <a href="BamMajors.php">
-      <img src="images/BamMajors.jpg" width="40%" height="30%"></a> &ensp;
+    
+    <section class="NavBar">
+	  <ul>
+        <li class="history">
+          <a href="BamHome.php">Home</a>
+          <strong>&lsaquo;<strong>
+          <a href="BamActivities.php">Activites</a>
+		  <strong>&lsaquo;<strong>
+		  <a href="BamParkour.php">Parkour</a>
+        </li>
+      </ul>
     </section>
-
-    <footer>BAM Forums&copy;</footer>
+	
+    <section class="Topics">
+	  <ul>
+        <li><a href="BamParkourTechniques.php">Locations</a></li>
+        <li><a href="BamParkourTechniques.php">Techniques</a></li>
+		<li><a href="BamParkourTechniques.php">Meet Ups</a></li>
+      </ul>
+    </section>
+	
+     <footer>BAM Forums&copy;</footer>
 
   </body>
 </html>

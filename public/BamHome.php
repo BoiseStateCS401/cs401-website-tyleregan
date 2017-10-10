@@ -42,10 +42,12 @@
       <img src="images/BamMajors.jpg" width="40%" height="30%"></a> &ensp;
     </section>
 
-    <footer>BAM Forums&copy;</footer>
+<?php    /*<footer>BAM Forums&copy;</footer>
 
   </body>
-</html>
+</html>*/
+require_once('BamFooter.php');
+?>
 
 
 

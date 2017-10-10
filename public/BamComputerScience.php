@@ -34,15 +34,31 @@
   require_once('BamHeader.php');
   /*require_once('BamForumNavBar.php');*/
 ?>
-
-    <section id="HomePic">
-      <a href="BamActivities.php">
-      <img src="images/BamActivities.jpg" width="40%" height="30%"></a> &ensp;
-      <a href="BamMajors.php">
-      <img src="images/BamMajors.jpg" width="40%" height="30%"></a> &ensp;
+    
+    <section class="NavBar">
+	  <ul>
+        <li class="history">
+          <a href="BamHome.php">Home</a>
+          <strong>&lsaquo;<strong>
+          <a href="BamMajors.php">Majors</a>
+		  <strong>&lsaquo;<strong>
+		  <a href="BamComputerScience.php">Computer Science</a>
+        </li>
+      </ul>
     </section>
-
-    <footer>BAM Forums&copy;</footer>
+	
+    <section class="Topics">
+	  <ul>
+        <li><a href="BamCS400s.php">CS100s</a></li>
+        <li><a href="BamCS400s.php">CS200s</a></li>
+		<li><a href="BamCS400s.php">CS300s</a></li>
+        <li><a href="BamCS400s.php">CS400s</a></li>
+		<li><a href="BamCS400s.php">Project Ideas</a></li>
+        <li><a href="BamCS400s.php">Other</a></li>
+      </ul>
+    </section>
+	
+     <footer>BAM Forums&copy;</footer>
 
   </body>
 </html>

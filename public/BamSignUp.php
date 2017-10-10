@@ -12,8 +12,9 @@
   <body>
     <aside class="Profile">
       <nav>
-	    <p><a href="BamLogin.php">Login</a> &nbsp;
-	       <a href="BamSignUp.php">Sign Up</a>
+	    <p>
+		  <a href="BamHome.php">Home</a>
+		  <a href="BamLogin.php">Login</a>
         </p>
       </nav>
     </aside>
@@ -35,14 +36,18 @@
   /*require_once('BamForumNavBar.php');*/
 ?>
 
-    <section id="HomePic">
-      <a href="BamActivities.php">
-      <img src="images/BamActivities.jpg" width="40%" height="30%"></a> &ensp;
-      <a href="BamMajors.php">
-      <img src="images/BamMajors.jpg" width="40%" height="30%"></a> &ensp;
-    </section>
+    <p class = "Title">Sign Up</p>
+	<hr>
+	
+	<form> <!--action="/action_page.php"-->
+	  Email: <input type="text" name="Email">
+	  <br>
+	  Password: <input type="text" name="Password">
+	  <br><br>
+	  <input type="submit" value="Submit">
+	</form>	
 
-    <footer>BAM Forums&copy;</footer>
+     <footer>BAM Forums&copy;</footer>
 
   </body>
 </html>
