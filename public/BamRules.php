@@ -78,11 +78,9 @@
       </form>
     </section>
 	
-    <footer>BAM Forums&copy;</footer>
-
-  </body>
-</html>
-
+<?php
+    require_once('BamFooter.php');
+?>
 
 
 
