@@ -87,7 +87,7 @@
       </ul>
     </section>
 
-<php?
+<?php
     require_once('BamFooter.php');
 ?>
 
