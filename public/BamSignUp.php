@@ -1,6 +1,6 @@
 <?php
 
-  $thisPage = "BamSigUp";
+  $thisPage = "BamSignUp";
   require_once('BamHead.php');
   require_once('BamNavBar.php');
   require_once('BamHeader.php');
