@@ -1,4 +1,5 @@
 <?php
+  session_start();
 
   $thisPage = "BamSignUp";
   require_once('BamHead.php');
@@ -10,12 +11,29 @@
     <p class = "Title">Sign Up</p>
 	<hr>
 	
-	<form> <!--action="/action_page.php"-->
-	  Email: <input type="text" name="Email">
-	  <br>
-	  Password: <input type="text" name="Password">
-	  <br><br>
-	  <input type="submit" value="Submit">
+	<form method="POST" action="BamLoginHandler.php" autocomplete="off">
+	  <fieldset>
+	  <legend>This is the Legend</legend>
+	  <p>
+	    <label for="email"> Email:</label>
+	    <input type="email" name="Email" maxlength="75" value="<?= $_SESSION['presets']['email'] ?>" >
+		<!--TODO javascript window pop up for rules on email-->
+	  </p>
+	  <p>
+	    <label for="username"> Username:</label>
+	    <input type="text" name="Username" maxlength="75" value="<?= $_SESSION['presets']['username'] ?>" >
+		<!--TODO javascript window pop up for rules on username-->
+	  </p>
+	  <p>
+	    <label for="password"> Password: </label>
+	    <input type="password" name="Password" maxlength="75">
+		<!--TODO javascript window pop up for rules on password-->
+	  </p>
+	  <p>
+	    <label for="passwordMatch"> Confirm Password:</label>
+	    <input type="password" name="passwordMatch" maxlength="75">
+	  </p>
+	  <input type="submit" value="Login">
 	</form>	
 
 <?php
