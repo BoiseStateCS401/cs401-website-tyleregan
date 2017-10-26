@@ -1,6 +1,5 @@
 <?php
-  echo "Found file.";
-  /*session_start();
+  session_start();
 
 //Get variables
 $email = $_POST['email'];
@@ -11,7 +10,8 @@ $errors = array();
 $valid = true;
 
 echo "Starting validation";
-validateEmail($email);
+
+/*validateEmail($email);
 validatePassword($password);
 
 
