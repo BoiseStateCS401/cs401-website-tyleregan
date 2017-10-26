@@ -13,7 +13,6 @@
 	
 	<form method="POST" action="BamLoginHandler.php" autocomplete="off">
 	  <fieldset>
-	  <legend>This is the Legend</legend>
 	  <p>
 	    <label for="email"> Email:</label>
 	    <input type="email" name="Email" maxlength="75" value="<?= $_SESSION['presets']['email'] ?>" >
@@ -34,6 +33,7 @@
 	    <input type="password" name="passwordMatch" maxlength="75">
 	  </p>
 	  <input type="submit" value="Login">
+	  </fieldset>
 	</form>	
 
 <?php
