@@ -1,4 +1,5 @@
 <?php
+  echo "Found file.";
   session_start();
 
 //Get variables
@@ -9,8 +10,10 @@ $errors = array();
 //Initalize valid.
 $valid = true;
 
+echo "Starting validation";
 validateEmail($email);
 validatePassword($password);
+
 
 function validateEmail($field){
 	if(strpos($field, '@u.boisestate.edu') == false){
@@ -38,10 +41,11 @@ function validatePassword($field){
 	}
 }
 
-if($valid){
+echo "Redirecting";
+/*if($valid){
 	header{'Location: BamHome.php'};
 } else {
 	$_SESSION['errors'] = $errors;
 	$_SESSION['presets'] = array('email' => htmlspecialchars($email));
 	header{'Location: BamLogin.php'};
-?>
+?>*/
