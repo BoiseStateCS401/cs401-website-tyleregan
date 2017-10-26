@@ -11,9 +11,6 @@ $valid = true;
 
 validateEmail($email);
 validatePassword($password);
-echo "Finished validation";
-/*
-
 
 function validateEmail($field){
 	if(strpos($field, '@u.boisestate.edu') == false){
@@ -41,12 +38,11 @@ function validatePassword($field){
 	}
 }
 
-echo "Redirecting";
 if($valid){
 	header{'Location: BamHome.php'};
 } else {
 	$_SESSION['errors'] = $errors;
 	$_SESSION['presets'] = array('email' => htmlspecialchars($email));
 	header{'Location: BamLogin.php'};
-}*/
+}
 ?>
