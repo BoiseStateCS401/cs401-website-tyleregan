@@ -9,10 +9,10 @@ $errors = array();
 //Initalize valid.
 $valid = true;
 
-echo "Starting validation";
-
-/*validateEmail($email);
+validateEmail($email);
 validatePassword($password);
+echo "Finished validation";
+/*
 
 
 function validateEmail($field){
