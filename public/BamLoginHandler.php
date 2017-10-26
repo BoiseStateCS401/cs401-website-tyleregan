@@ -48,4 +48,5 @@ echo "Redirecting";
 	$_SESSION['errors'] = $errors;
 	$_SESSION['presets'] = array('email' => htmlspecialchars($email));
 	header{'Location: BamLogin.php'};
-?>*/
+}*/
+?>
