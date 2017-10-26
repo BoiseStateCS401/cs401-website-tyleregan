@@ -13,7 +13,7 @@ validateEmail($email);
 validatePassword($password);
 
 function validateEmail($field){
-	if(strpos($field, '@u.boisestate.edu') == false){
+	if(strpos($field, '@u.boisestate.edu') === false){
 		$errors['email'] = "Must be a boisestate student email.";
 		$valid = false;
 	} else if(strlen($field) > 75){
