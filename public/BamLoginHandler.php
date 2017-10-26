@@ -1,6 +1,6 @@
 <?php
   echo "Found file.";
-  session_start();
+  /*session_start();
 
 //Get variables
 $email = $_POST['email'];
@@ -42,7 +42,7 @@ function validatePassword($field){
 }
 
 echo "Redirecting";
-/*if($valid){
+if($valid){
 	header{'Location: BamHome.php'};
 } else {
 	$_SESSION['errors'] = $errors;
