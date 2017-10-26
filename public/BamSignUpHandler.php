@@ -1,4 +1,5 @@
 <?php
+  echo "Found file";
   session_start();
 
   //Get variables
@@ -11,6 +12,7 @@
   //Initalize valid.
   $valid = true;
 
+  echo "Starting validation";
   validateEmail($email);
   validateUsername($username);
   validatePassword($password);
@@ -63,12 +65,13 @@
 	}
   }
 
-  if($valid){
+  echo "Redirecting";
+  /*if($valid){
 	header{'Location: BamAccountless.php'};
   } else {
 	$_SESSION['errors'] = $errors;
 	$_SESSION['presets'] = array('email' => htmlspecialchars($email),
 								 'username' => htmlspecialchars($username));
 	header{'Location: BamSignUp.php'};
-  }
+  }*/
 ?>
