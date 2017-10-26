@@ -18,7 +18,7 @@
 
   //Checks the email for each requirement.
   function validateEmail($field){
-	if(strpos($field, '@u.boisestate.edu') == false){
+	if(strpos($field, '@u.boisestate.edu') === false){
 		$emailError = "Must be a boisestate student email.";
 		$valid = false;
 	} else if(strlen($field) > 75){
