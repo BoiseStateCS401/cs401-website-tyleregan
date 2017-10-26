@@ -15,17 +15,17 @@
 	  <fieldset>
 	  <p>
 	    <label for="email"> Email:</label>
-	    <input type="email" name="Email" maxlength="75" value="<?= $_SESSION['presets']['email'] ?>" >
+	    <input type="email" name="email" maxlength="75" value="<?= $_SESSION['presets']['email'] ?>" >
 		<!--TODO javascript window pop up for rules on email-->
 	  </p>
 	  <p>
 	    <label for="username"> Username:</label>
-	    <input type="text" name="Username" maxlength="75" value="<?= $_SESSION['presets']['username'] ?>" >
+	    <input type="text" name="username" maxlength="75" value="<?= $_SESSION['presets']['username'] ?>" >
 		<!--TODO javascript window pop up for rules on username-->
 	  </p>
 	  <p>
 	    <label for="password"> Password: </label>
-	    <input type="password" name="Password" maxlength="75">
+	    <input type="password" name="password" maxlength="75">
 		<!--TODO javascript window pop up for rules on password-->
 	  </p>
 	  <p>
