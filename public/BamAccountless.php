@@ -10,7 +10,7 @@
     <p class = "Title">Successful Registration!...Kind of!</p>
 	<hr>
 	
-	<p>Sorry, but accounts are not being handled at this time.</p>
+	<p class="TODO">Sorry, but accounts are not being handled at this time.</p>
 
 <?php
     require_once('BamFooter.php');
