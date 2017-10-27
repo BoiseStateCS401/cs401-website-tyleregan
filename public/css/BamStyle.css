@@ -259,6 +259,15 @@ form
 	display: none;
 }
 
+.TODO
+{
+	font-size: 32px;
+	font-weight: bold;
+	color: #F1632A;
+	text-shadow: 4px 3px 2px #000000;
+	text-align: center;
+}
+
 /*
   background is an image.
 
