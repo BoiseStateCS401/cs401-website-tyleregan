@@ -1,9 +1,9 @@
 <?php
-  $thisPage = "BamRules";
-  require_once('BamHead.php');
-  require_once('BamNavBar.php');
-  require_once('BamHeader.php');
-  /*require_once('BamForumNavBar.php');*/
+	require_once("BamSessionHelper.php");
+	session_start();
+  
+	$thisPage = "BamRules";
+	require_once('BamHeader.php');
 ?>
   
     <section class="NavBar">
