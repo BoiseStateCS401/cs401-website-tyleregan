@@ -2,7 +2,11 @@
 	require_once("BamSessionHelper.php");
 	session_start();
   
+	$thisTopic = "Activity";
 	$thisPage = "BamCreateThread";
+	$thisActivity = $_GET['Activity'];
+	$thisList = $_GET['List'];
+	$thisLevel = 5;
 	require_once('BamHeader.php');
 ?>
     

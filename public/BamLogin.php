@@ -4,8 +4,6 @@
   
 	$thisPage = "BamLogin";
 	require_once('BamHeader.php');
-  
-
 ?>
 
 		<p class = "Title">Login</p>

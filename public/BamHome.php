@@ -7,9 +7,9 @@
 ?>
 
 		<section id="HomePic">
-			<a href="BamActivities.php">
+			<a href="BamActivityList.php">
 			<img src="images/BamActivities.jpg" width="40%" height="30%"></a> &ensp;
-			<a href="BamMajors.php">
+			<a href="BamMajorList.php">
 			<img src="images/BamMajors.jpg" width="40%" height="30%"></a> &ensp;
 		</section>
 

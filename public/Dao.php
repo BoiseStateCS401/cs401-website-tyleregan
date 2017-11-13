@@ -31,4 +31,50 @@ class Dao
 		$conn = $this->getConnection();
 		return $conn->getAttribute(constant("PDO::ATTR_CONNECTION_STATUS"));
 	}
+	
+	public function getAllRows()
+	{
+		$conn = $this->getConnection();
+		$stmt =  $conn->query("SELECT * FROM topics");
+		return $stmt->fetchAll();
+	}
+	
+	public function getRow($email)
+	{
+		$conn = $this->getConnection();
+		//Placeholder
+		$query = "SELECT * FROM test WHERE email = :email";
+		//Statement
+		$stmt = $conn->prepare($query);
+		//Bind
+		$stmt = bindParam(':email', $email);
+		//Execute
+		$stmt->execute();
+		//Return
+		return $stmt->fetchAll();
+	}
+	
+	public function addRow($email)
+	{
+		$conn = $this->getConnection();
+		//Placeholder
+		$query = "INSERT INTO test (email) VALUES (:email)";
+		//Statement
+		$stmt = $conn->prepare($query);
+		//Bind
+		$stmt->bindParam('email', $email);
+		//Execute
+		$stmt->execute();
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+

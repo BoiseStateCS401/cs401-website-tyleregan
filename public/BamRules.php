@@ -2,25 +2,14 @@
 	require_once("BamSessionHelper.php");
 	session_start();
   
-	$thisPage = "BamRules";
+	$thisTopic = "Major";
+	$thisPage = "Rules For Posts";
+	$thisMajor = $_GET['Major'];
+	$thisList = $_GET['List'];
+	$thisLevel = 5;
 	require_once('BamHeader.php');
+	require_once('BamForumNavBar.php');
 ?>
-  
-    <section class="NavBar">
-      <ul>
-        <li class="history">
-          <a href="BamHome.php">Home</a>
-          <strong>&lsaquo;<strong>
-          <a href="BamMajors.php">Majors</a>
-          <strong>&lsaquo;<strong>
-          <a href="BamComputerScience.php">Computer Science</a>
-          <strong>&lsaquo;<strong>
-          <a href="BamCS400s.php">CS400s</a>
-		  <strong>&lsaquo;<strong>
-		  <a href="BamRules.php">Rules for Posts</a>
-        </li>
-      </ul>
-    </section>
 	
     <section class = "Title">
 	  <p id = "MiniTitle">
