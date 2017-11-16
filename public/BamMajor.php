@@ -1,22 +1,26 @@
 <?php
+	require_once("Dao.php");
 	require_once("BamSessionHelper.php");
 	session_start();
   
-	$thisTopic = "Major";
-	$thisPage = "BamMajor";
-	$thisMajor = $_GET['Major'];
-	$thisLevel = 3;
+	$_SESSION['Topic'] = $_GET['Major'];
+	$_SESSION['Level'] = 3;
+	
+	$dao = new Dao();
+	$result = $dao->getAbbr($_SESSION['Topic']);
+	$_SESSION['Abbr'] = $result[0];
+	
 	require_once('BamHeader.php');
 	require_once('BamForumNavBar.php');
 ?>	
 		<section class="Topics">
 			<ul>
-				<li><a href="BamMajorThreadList.php?Major=<?php echo $thisMajor ?>&List=CS100s">CS100s</a></li>
-				<li><a href="BamMajorThreadList.php?Major=<?php echo $thisMajor ?>&List=CS200s">CS200s</a></li>
-				<li><a href="BamMajorThreadList.php?Major=<?php echo $thisMajor ?>&List=CS300s">CS300s</a></li>
-				<li><a href="BamMajorThreadList.php?Major=<?php echo $thisMajor ?>&List=CS400s">CS400s</a></li>
-				<li><a href="BamMajorThreadList.php?Major=<?php echo $thisMajor ?>&List=Project Ideas">Project Ideas</a></li>
-				<li><a href="BamMajorThreadList.php?Major=<?php echo $thisMajor ?>&List=Other">Other</a></li>
+				<li><a href="BamMajorThreadList.php?Major=<?php echo $_SESSION['Topic'] ?>&List=100s">100s</a></li>
+				<li><a href="BamMajorThreadList.php?Major=<?php echo $_SESSION['Topic'] ?>&List=200s">200s</a></li>
+				<li><a href="BamMajorThreadList.php?Major=<?php echo $_SESSION['Topic'] ?>&List=300s">300s</a></li>
+				<li><a href="BamMajorThreadList.php?Major=<?php echo $_SESSION['Topic'] ?>&List=400s">400s</a></li>
+				<li><a href="BamMajorThreadList.php?Major=<?php echo $_SESSION['Topic'] ?>&List=Project Ideas">Project Ideas</a></li>
+				<li><a href="BamMajorThreadList.php?Major=<?php echo $_SESSION['Topic'] ?>&List=Other">Other</a></li>
 			</ul>
 		</section>
 <?php

@@ -2,9 +2,8 @@
 	require_once("BamSessionHelper.php");
 	session_start();
   
-	$thisTopic = "Major";
-	$thisPage = "BamMajorList";
-	$thisLevel = 2;
+	$_SESSION['Category'] = "Major";
+	$_SESSION['Level'] = 2;
 	require_once('BamHeader.php');
 	require_once('BamForumNavBar.php');
 ?>
@@ -14,7 +13,7 @@
 				<li><a href="BamMajor.php?Major=Anthropology">Anthropology</a></li>
 				<li><a href="BamMajor.php?Major=Art">Art</a></li>
 				<li><a href="BamMajor.php?Major=Biological Sciences">Biological Sciences</a></li>
-				<li><a href="BamMajor.php?Major=Chemistry/Biochemistry">Chemistry/Biochemistry</a></li>
+				<li><a href="BamMajor.php?Major=Chemistry">Chemistry</a></li>
 				<li><a href="BamMajor.php?Major=Civil Engineering">Civil Engineering</a></li>
 				<li><a href="BamMajor.php?Major=Communication">Communication</a></li>
 				<li><a href="BamMajor.php?Major=Community and Environmental Health">Community and Environmental Health</a></li>
@@ -24,26 +23,21 @@
 				<li><a href="BamMajor.php?Major=Curruculum, Instruction, and Foundational Studies">Curruculum, Instruction, and Foundational Studies</a></li>
 				<li><a href="BamMajor.php?Major=Early and Special Education">Early and Special Education</a></li>
 				<li><a href="BamMajor.php?Major=Economics">Economics</a></li>
-				<li><a href="BamMajor.php?Major=Electrical Engineering">Electrical Engineering</a></li>
-				<li><a href="BamMajor.php?Major=Engineering Science">Engineering Science</a></li>
+				<li><a href="BamMajor.php?Major=Electrical and Computer Engineering">Electrical and Computer Engineering</a></li>
 				<li><a href="BamMajor.php?Major=English">English</a></li>
-				<li><a href="BamMajor.php?Major=Environmental Studies">Environmental Studies</a></li>
 				<li><a href="BamMajor.php?Major=Finance">Finance</a></li>
 				<li><a href="BamMajor.php?Major=Games, Interactive Media, and Mobile">Games, Interactive Media, and Mobile</a></li>
-				<li><a href="BamMajor.php?Major=Gender Studies">Gender Studies</a></li>
 				<li><a href="BamMajor.php?Major=Geosciences">Geosciences</a></li>
 				<li><a href="BamMajor.php?Major=Global Studies">Global Studies</a></li>
 				<li><a href="BamMajor.php?Major=History">History</a></li>
-				<li><a href="BamMajor.php?Major=Industrial Engineering">Industrial Engineering</a></li>
 				<li><a href="BamMajor.php?Major=Information Technology and Supply Chain Management">Information Technology and Supply Chain Management</a></li>
 				<li><a href="BamMajor.php?Major=Kinesiology">Kinesiology</a></li>
 				<li><a href="BamMajor.php?Major=Literacy, Language, and Culture">Literacy, Language, and Culture</a></li>
 				<li><a href="BamMajor.php?Major=Management">Management</a></li>
 				<li><a href="BamMajor.php?Major=Marketing">Marketing</a></li>
-				<li><a href="BamMajor.php?Major=Mathematics">Mathematics</a></li>
-				<li><a href="BamMajor.php?Major=Mechanical Engineering">Mechanical Engineering</a></li>
 				<li><a href="BamMajor.php?Major=Materials Science and Engineering">Materials Science and Engineering</a></li>
-				<li><a href="BamMajor.php?Major=Multidisciplinary Studies">Multidisciplinary Studies</a></li>
+				<li><a href="BamMajor.php?Major=Mathematics">Mathematics</a></li>
+				<li><a href="BamMajor.php?Major=Mechanical and biomedical Engineering">Mechanical and biomedical Engineering</a></li>
 				<li><a href="BamMajor.php?Major=Music">Music</a></li>
 				<li><a href="BamMajor.php?Major=Nursing">Nursing</a></li>
 				<li><a href="BamMajor.php?Major=Philosophy">Philosophy</a></li>

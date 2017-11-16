@@ -2,30 +2,11 @@
 	require_once("BamSessionHelper.php");
 	session_start();
   
-	$thisTopic = "Activity";
-	$thisPage = "BamCreateThread";
-	$thisActivity = $_GET['Activity'];
-	$thisList = $_GET['List'];
-	$thisLevel = 5;
+	$_SESSION['Thread'] = "BamCreateThread";
+	$_SESSION['Level'] = 5;
 	require_once('BamHeader.php');
+	require_once('BamForumNavBar.php');
 ?>
-    
-    <section class="NavBar">
-      <ul>
-        <li class="history">
-          <a href="BamHome.php">Home</a>
-          <strong>&lsaquo;<strong>
-          <a href="BamMajors.php">Majors</a>
-          <strong>&lsaquo;<strong>
-          <a href="BamComputerScience.php">Computer Science</a>
-          <strong>&lsaquo;<strong>
-          <a href="BamCS400s.php">CS400s</a>
-		  <strong>&lsaquo;<strong>
-		  <a href="BamRules.php">Create Thread</a>
-        </li>
-      </ul>
-    </section>
-	
     <section class = "Title">
 	  <p id = "MiniTitle">
         Create Thread

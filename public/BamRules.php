@@ -2,11 +2,8 @@
 	require_once("BamSessionHelper.php");
 	session_start();
   
-	$thisTopic = "Major";
-	$thisPage = "Rules For Posts";
-	$thisMajor = $_GET['Major'];
-	$thisList = $_GET['List'];
-	$thisLevel = 5;
+	$_SESSION['Thread'] = "Rules for Posts";
+	$_SESSION['Level'] = 5;
 	require_once('BamHeader.php');
 	require_once('BamForumNavBar.php');
 ?>

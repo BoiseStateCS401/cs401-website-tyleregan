@@ -2,11 +2,9 @@
 	require_once("BamSessionHelper.php");
 	session_start();
   
-	$thisTopic = "Activity";
-	$thisPage = "BamActivityThreadList";
-	$thisActivity = $_GET['Activity'];
-	$thisList = $_GET['List'];
-	$thisLevel = 4;
+	$_SESSION['Topic'] = $_GET['Activity'];
+	$_SESSION['List'] = $_GET['List'];
+	$_SESSION['Level'] = 4;
 	require_once('BamHeader.php');
 	require_once('BamForumNavBar.php');
 ?>

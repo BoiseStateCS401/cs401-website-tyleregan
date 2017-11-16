@@ -39,19 +39,19 @@ class Dao
 		return $stmt->fetchAll();
 	}
 	
-	public function getRow($email)
+	public function getAbbr($Topic)
 	{
 		$conn = $this->getConnection();
 		//Placeholder
-		$query = "SELECT * FROM test WHERE email = :email";
+		$query = "SELECT abbr FROM Topics WHERE name = (:topic)";
 		//Statement
 		$stmt = $conn->prepare($query);
 		//Bind
-		$stmt = bindParam(':email', $email);
+		$stmt->bindParam("topic", $Topic);
 		//Execute
 		$stmt->execute();
 		//Return
-		return $stmt->fetchAll();
+		return $stmt->fetch();
 	}
 	
 	public function addRow($email)

@@ -2,9 +2,8 @@
 	require_once("BamSessionHelper.php");
 	session_start();
   
-	$thisTopic = "Activity";
-	$thisPage = "BamActivityList";
-	$thisLevel = 2;
+	$_SESSION['Category'] = "Activity";
+	$_SESSION['Level'] = 2;
 	require_once('BamHeader.php');
 	require_once('BamForumNavBar.php');
 ?>
