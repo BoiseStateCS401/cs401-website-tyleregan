@@ -32,13 +32,9 @@ class Dao
 		return $conn->getAttribute(constant("PDO::ATTR_CONNECTION_STATUS"));
 	}
 	
-	public function getAllRows()
-	{
-		$conn = $this->getConnection();
-		$stmt =  $conn->query("SELECT * FROM topics");
-		return $stmt->fetchAll();
-	}
-	
+	/**
+	* Returns the abbreviation/table name for the provided topic.
+	*/
 	public function getAbbr($Topic)
 	{
 		$conn = $this->getConnection();
@@ -54,15 +50,90 @@ class Dao
 		return $stmt->fetch();
 	}
 	
-	public function addRow($email)
+	/**
+	* Returns the main threads. The ones on all tables.
+	*/
+	public function getMainThreads()
 	{
 		$conn = $this->getConnection();
 		//Placeholder
-		$query = "INSERT INTO test (email) VALUES (:email)";
+		$query = "SELECT thread FROM AllThreads";
+		//Statement
+		$stmt = $conn->prepare($query);
+		//Execute
+		$stmt->execute();
+		//Return
+		return $stmt->fetchAll();
+	}
+	
+	/**
+	* Returns the threads for this table/topic and subtopic.
+	*/
+	public function getThreads($table, $subTopic)
+	{
+		$conn = $this->getConnection();
+		//Placeholder
+		$query = "SELECT thread FROM (:table) WHERE subTopic = (:subTopic)";
 		//Statement
 		$stmt = $conn->prepare($query);
 		//Bind
-		$stmt->bindParam('email', $email);
+		$stmt->bindParam("table", $topic);
+		$stmt->bindParam("subTopic", $subTopic);
+		//Execute
+		$stmt->execute();
+		//Return
+		return $stmt->fetchAll();
+	}
+	
+	/**
+	* Returns the posts from the provided thread from the main threads table.
+	*/
+	public function getMainPosts($thread)
+	{
+		$conn = $this->getConnection();
+		//Placeholder
+		$query = "SELECT poster, postDate, postContent FROM AllThreads WHERE thread = (:thread)";
+		//Statement
+		$stmt = $conn->prepare($query);
+		//Bind
+		$stmt->bindParam("thread", $thread);
+		//Execute
+		$stmt->execute();
+		//Return
+		return $stmt->fetchAll();
+	}
+	
+	/**
+	* Returns the posts for this table/topic and subtopic.
+	*/
+	public function getPosts($table, $thread)
+	{
+		$conn = $this->getConnection();
+		//Placeholder
+		$query = "SELECT poster, postDate, postContent FROM (:table) WHERE thread = (:thread)";
+		//Statement
+		$stmt = $conn->prepare($query);
+		//Bind
+		$stmt->bindParam("table", $topic);
+		$stmt->bindParam("thread", $thread);
+		//Execute
+		$stmt->execute();
+		//Return
+		return $stmt->fetchAll();
+	}
+	
+	public function addUser($email, $password, $name, $title)
+	{
+		$conn = $this->getConnection();
+		//Placeholder
+		$query = "INSERT INTO users (email, password, name, title) VALUES ((:email), (:password), (:name), (:title))";
+		//Statement
+		$stmt = $conn->prepare($query);
+		//Bind
+		$stmt->bindParam("email", $email);
+		$stmt->bindParam("password", $password);
+		$stmt->bindParam("name", $name);
+		$stmt->bindParam("title", $title);
 		//Execute
 		$stmt->execute();
 	}

@@ -23,7 +23,12 @@
 		<section class = "Threads">
 			<ul>
 				<li>
-					<a href="BamRules.php">Rules for Posts</a>
+					<?php $result = $dao->getMainThreads();
+					foreach($result as $row) {
+						$Thread = $row['thread'];
+					?>
+					<a href="BamPosts.php?Thread=<?php echo $Thread ?>"><?php echo $Thread?></a>
+					<?php }	?>
 				</li>
 			</ul>
 		</section>
