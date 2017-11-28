@@ -1,5 +1,7 @@
 <?php
   session_start();
+  require_once("Dao.php");
+  $dao = new Dao();
 
   //Get variables
   $email = $_POST['email'];
@@ -17,6 +19,9 @@
 		$valid = 0;
 	} else if(strlen($email) > 75){
 		$errors['email'] = "Too long, must be less than 76 characters.";
+		$valid = 0;
+	} else if($dao->checkEmail($email)){
+		$errors['email'] = "This email already exists. Contact support if someone else is using your account.";
 		$valid = 0;
 	}
 
@@ -44,8 +49,9 @@
 	$valid = 0;
   }
 
-  if($valid){
-	header('Location: BamAccountless.php');
+	if($valid){
+		$dao->addUser($email, $password, $username);
+		header('Location: BamWelcome.php');
   } else {
 	$_SESSION['errors'] = $errors;
 	$_SESSION['presets'] = array('email' => htmlspecialchars($email),

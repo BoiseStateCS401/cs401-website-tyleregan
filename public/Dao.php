@@ -33,6 +33,24 @@ class Dao
 	}
 	
 	/**
+	 * Adds a new user to the database.
+	 */
+	public function addUser($email, $password, $name)
+	{
+		$conn = $this->getConnection();
+		//Placeholder
+		$query = "INSERT INTO users (email, password, name, title, posts) VALUES ((:email), (:password), (:name), 'member', '0')";
+		//Statement
+		$stmt = $conn->prepare($query);
+		//Bind
+		$stmt->bindParam("email", $email);
+		$stmt->bindParam("password", $password);
+		$stmt->bindParam("name", $name);
+		//Execute
+		$stmt->execute();
+	}
+	
+	/**
 	* Returns the abbreviation/table name for the provided topic.
 	*/
 	public function getAbbr($Topic)
@@ -51,6 +69,76 @@ class Dao
 	}
 	
 	/**
+	* Checks if the email exists.
+	*/
+	public function checkEmail($Email)
+	{
+		$conn = $this->getConnection();
+		//Placeholder
+		$query = "SELECT email FROM Users";
+		//Statement
+		$stmt = $conn->prepare($query);
+		//Execute
+		$stmt->execute();
+		//Return
+		$emails = $stmt->fetchall();
+		//Taken from resources
+		foreach ($emails as $email){
+			// recreate email object
+			//$email = unserialize($email);
+			if ($Email === $email['email']) {
+				// user email found, return 1 (aka true)
+				return 1;
+			}
+		}
+		return 0;
+	}
+	
+	/**
+	* Checks if the password corresponds to the email/user.
+	*/
+	public function checkPassword($Email, $Password)
+	{
+		$conn = $this->getConnection();
+		//Placeholder
+		$query = "SELECT password FROM Users WHERE email = (:email)";
+		//Statement
+		$stmt = $conn->prepare($query);
+		//Bind
+		$stmt->bindParam("email", $Email);
+		//Execute
+		$stmt->execute();
+		//Return
+		$pass = $stmt->fetch();
+		//Taken from resources
+		// recreate password object
+		//$pass = unserialize($pass);
+		if ($Password == $pass['password']) {
+			// Passwords matched, return 1 (true)
+			return 1;
+		}
+		return 0; //Something wasn't right, return 0 (false)
+	}
+	
+	/**
+	* Returns the posts from the provided thread from the main threads table.
+	*/
+	public function getMainPosts($thread)
+	{
+		$conn = $this->getConnection();
+		//Placeholder
+		$query = "SELECT poster, postDate, postContent FROM AllThreads WHERE thread = (:thread)";
+		//Statement
+		$stmt = $conn->prepare($query);
+		//Bind
+		$stmt->bindParam("thread", $thread);
+		//Execute
+		$stmt->execute();
+		//Return
+		return $stmt->fetchAll();
+	}
+	
+	/**
 	* Returns the main threads. The ones on all tables.
 	*/
 	public function getMainThreads()
@@ -60,6 +148,25 @@ class Dao
 		$query = "SELECT thread FROM AllThreads";
 		//Statement
 		$stmt = $conn->prepare($query);
+		//Execute
+		$stmt->execute();
+		//Return
+		return $stmt->fetchAll();
+	}
+	
+	/**
+	* Returns the posts for this table/topic and subtopic.
+	*/
+	public function getPosts($table, $thread)
+	{
+		$conn = $this->getConnection();
+		//Placeholder
+		$query = "SELECT poster, postDate, postContent FROM (:table) WHERE thread = (:thread)";
+		//Statement
+		$stmt = $conn->prepare($query);
+		//Bind
+		$stmt->bindParam("table", $topic);
+		$stmt->bindParam("thread", $thread);
 		//Execute
 		$stmt->execute();
 		//Return
@@ -86,58 +193,22 @@ class Dao
 	}
 	
 	/**
-	* Returns the posts from the provided thread from the main threads table.
+	* Returns the title for the provided email/user.
 	*/
-	public function getMainPosts($thread)
+	public function getUserTitle($Email)
 	{
 		$conn = $this->getConnection();
 		//Placeholder
-		$query = "SELECT poster, postDate, postContent FROM AllThreads WHERE thread = (:thread)";
+		$query = "SELECT title FROM Users WHERE email = (:email)";
 		//Statement
 		$stmt = $conn->prepare($query);
 		//Bind
-		$stmt->bindParam("thread", $thread);
+		$stmt->bindParam("email", $Email);
 		//Execute
 		$stmt->execute();
 		//Return
-		return $stmt->fetchAll();
+		return $stmt->fetch();
 	}
-	
-	/**
-	* Returns the posts for this table/topic and subtopic.
-	*/
-	public function getPosts($table, $thread)
-	{
-		$conn = $this->getConnection();
-		//Placeholder
-		$query = "SELECT poster, postDate, postContent FROM (:table) WHERE thread = (:thread)";
-		//Statement
-		$stmt = $conn->prepare($query);
-		//Bind
-		$stmt->bindParam("table", $topic);
-		$stmt->bindParam("thread", $thread);
-		//Execute
-		$stmt->execute();
-		//Return
-		return $stmt->fetchAll();
-	}
-	
-	public function addUser($email, $password, $name, $title)
-	{
-		$conn = $this->getConnection();
-		//Placeholder
-		$query = "INSERT INTO users (email, password, name, title) VALUES ((:email), (:password), (:name), (:title))";
-		//Statement
-		$stmt = $conn->prepare($query);
-		//Bind
-		$stmt->bindParam("email", $email);
-		$stmt->bindParam("password", $password);
-		$stmt->bindParam("name", $name);
-		$stmt->bindParam("title", $title);
-		//Execute
-		$stmt->execute();
-	}
-	
 	
 }
 
