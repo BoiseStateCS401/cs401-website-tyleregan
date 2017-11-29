@@ -5,7 +5,7 @@
 
   //Get variables
   $email = $_POST['email'];
-  $username = $_POST['username'];
+  $username = substr($email, 0, strlen($email) - 17);
   $password = $_POST['password'];
   $passwordMatch = $_POST['passwordMatch'];
   $errors = array();
@@ -25,37 +25,34 @@
 		$valid = 0;
 	}
 
-  //Check the username for requirements.
-  if(strlen($username) < 4){
-		$errors['username'] = "Too short, must be more than 3 characters.";
-		$valid = 0;
-  } else if(strlen($username) > 75){
-		$errors['username'] = "Too long, must be less than 76 characters.";
-		$valid = 0;
-  }
-
-  //Check the password for requirements.
-	if(strlen($password) < 6){
-		$errors['password'] = "Too short, must be more than 6 characters.";
-		$valid = 0;
-	} else if(strlen($password) > 75){
-		$errors['password'] = "Too long, must be less than 76 characters.";
-		$valid = 0;
+  //Check the password for requirements if still valid.
+	if($valid){
+		if(strlen($password) < 6){
+			$errors['password'] = "Too short, must be more than 6 characters.";
+			$valid = 0;
+		} else if(strlen($password) > 75){
+			$errors['password'] = "Too long, must be less than 76 characters.";
+			$valid = 0;
+		}
 	}
   
-  //Check if passwords match.
-  if($password != $passwordMatch){
-	$errors['passwordMatch'] = "Your passwords did not match.";
-	$valid = 0;
-  }
+  //Check if passwords match if still valid.
+	if($valid){
+		if($password != $passwordMatch){
+			$errors['passwordMatch'] = "Your passwords did not match.";
+			$valid = 0;
+		}
+	}
 
 	if($valid){
 		$dao->addUser($email, $password, $username);
+		$_SESSION['email'] = $email;
+		$_SESSION['password'] = $password;
+		$_SESSION['name'] = $username;
 		header('Location: BamWelcome.php');
   } else {
 	$_SESSION['errors'] = $errors;
-	$_SESSION['presets'] = array('email' => htmlspecialchars($email),
-								 'username' => htmlspecialchars($username));
+	$_SESSION['presets']['email'] = htmlspecialchars($email);
 	header('Location: BamSignUp.php');
   }
 ?>

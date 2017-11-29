@@ -1,8 +1,11 @@
 <?php
 	require_once("BamSessionHelper.php");
 	session_start();
+	if($_SESSION['previousPage'] === "BamLogin"){
+		clearErrors();
+	}
   
-	$thisPage = "BamSignUp";
+	$_SESSION['previousPage'] = "BamSignUp";
 	require_once('BamHeader.php');
 ?>
 
@@ -12,15 +15,9 @@
 		<form class="Info" method="POST" action="BamSignUpHandler.php" autocomplete="off">
 			<p>
 				<label for="email"> Email:</label>
-				<input type="email" name="email" maxlength="75" value="<?php if(isset($_SESSION['presets']['email'])){ $_SESSION['presets']['email']; } ?>" >
+				<input type="email" name="email" maxlength="75" value="<?php if(isset($_SESSION['presets']['email'])){ echo $_SESSION['presets']['email']; } ?>" >
 				<?php displayError('email'); ?>
 				<!--TODO javascript window pop up for rules on email-->
-			</p>
-			<p>
-				<label for="username"> Username:</label>
-				<input type="text" name="username" maxlength="75" value="<?php if(isset($_SESSION['presets']['username'])){ echo $_SESSION['presets']['username']; } ?>" >
-				<?php displayError('username'); ?>
-				<!--TODO javascript window pop up for rules on username-->
 			</p>
 			<p>
 				<label for="password"> Password: </label>

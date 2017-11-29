@@ -22,9 +22,9 @@
 					<a href="BamHome.php">Home</a> &nbsp;
 					<a href="BamLogoutHandler.php">Logout</a>
 				<?php } else { ?>
-					ERROR: Not guest or member.
+					<!-- something went wrong -->
 				<?php } ?>
-				<?php echo $_SESSION['user'] ?>
+				<!-- <?php echo $_SESSION['user'] ?> -->
 				</p>
 			</nav>
 		</aside>

@@ -12,7 +12,7 @@ function checkLogin() {
 //Remove session to log user out (becomes guest).
 function logoutUser() {
 	session_destroy();
-	session_regenerate_id(true); # nuke old session
+	//session_regenerate_id(true); # nuke old session
 }
 
 //Prints preset for given SESSION key (if one exists).
