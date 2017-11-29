@@ -209,7 +209,7 @@ form
 	border-color: #FFAA88;
 }
 
-.PosterInfo  /*PHP NOTES SHOW ERRORS*/
+.PosterInfo
 {
 	display: inline-block;
 	width: 20%;
@@ -249,8 +249,24 @@ form
 	border-radius: 5px;
 	margin-top: 5px;
 	padding-bottom: 15px;
-	
 	color: #000000;
+}
+
+#Welcome
+{
+	font-size: 15px;
+	font-weight: bold;
+	color: #F1632A;
+	text-shadow: 4px 3px 2px #000000;
+	text-align: center;
+}
+
+#Creds
+{
+	color: #09347A;
+	text-decoration: none;
+	font-weight: bold;
+	margin-left: 10px;
 }
 
 /*Add collapsable section of JavaScript*/
