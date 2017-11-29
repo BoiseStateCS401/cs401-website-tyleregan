@@ -6,8 +6,8 @@
 	require_once('BamHeader.php');
 ?>
 
-		<section class="Topics">
-			<p>Welcome</p>
+		<section class="Title">
+			<p>Welcome to Bam Forums!</p>
 		</section>
 
 <?php

@@ -17,10 +17,14 @@
 					<a href="BamSignUp.php">Sign Up</a>
 				<?php } else if(checkLogin() === "Member"){ ?>
 					<a href="BamHome.php">Home</a> &nbsp;
-					<a href="BamLogout.php">Login</a>
+					<a href="BamLogoutHandler.php">Logout</a>
+				<?php } else if(checkLogin() === "Admin"){ ?>
+					<a href="BamHome.php">Home</a> &nbsp;
+					<a href="BamLogoutHandler.php">Logout</a>
 				<?php } else { ?>
 					ERROR: Not guest or member.
 				<?php } ?>
+				<?php echo $_SESSION['user'] ?>
 				</p>
 			</nav>
 		</aside>

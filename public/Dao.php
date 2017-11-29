@@ -39,7 +39,7 @@ class Dao
 	{
 		$conn = $this->getConnection();
 		//Placeholder
-		$query = "INSERT INTO users (email, password, name, title, posts) VALUES ((:email), (:password), (:name), 'member', '0')";
+		$query = "INSERT INTO users (email, password, name, title, posts) VALUES ((:email), (:password), (:name), 'Member', '0')";
 		//Statement
 		$stmt = $conn->prepare($query);
 		//Bind

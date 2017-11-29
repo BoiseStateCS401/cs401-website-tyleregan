@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	require_once("Dao.php");
+	require_once("BamSessionHelper.php");
 	$dao = new Dao();
 
 	//Get variables
@@ -38,8 +39,10 @@
 
 
 	if($valid){
+		$Title = $dao->getUserTitle($email);
+		$_SESSION['user'] = $Title[0];
+		clearErrors();
 		header('Location: BamHome.php');
-		$_SESSION['user'] = getUserTitle($email);
 	} else {
 		$_SESSION['errors'] = $errors;
 		$_SESSION['presets'] = array('email' => htmlspecialchars($email));

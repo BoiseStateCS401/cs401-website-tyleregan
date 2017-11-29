@@ -9,12 +9,6 @@ function checkLogin() {
 	}
 }
 
-//Log the user in by setting them as a member.
-function loginUser($email) {
-	session_regenerate_id(true);
-	$_SESSION["user"] = "Member";
-}
-
 //Remove session to log user out (becomes guest).
 function logoutUser() {
 	session_destroy();
