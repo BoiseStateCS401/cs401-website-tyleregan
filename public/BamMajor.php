@@ -3,6 +3,7 @@
 	require_once("BamSessionHelper.php");
 	session_start();
   
+	$_SESSION['previousPage'] = "BamMajor.php";
 	$_SESSION['Topic'] = $_GET['Major'];
 	$_SESSION['Level'] = 3;
 	

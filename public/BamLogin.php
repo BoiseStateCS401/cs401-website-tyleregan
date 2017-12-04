@@ -1,7 +1,7 @@
 <?php
 	require_once("BamSessionHelper.php");
 	session_start();
-	if($_SESSION['previousPage'] === "BamSignUp"){
+	if($_SESSION['previousPage'] === "BamSignUp.php"){
 		clearErrors();
 	}
   

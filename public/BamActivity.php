@@ -2,6 +2,7 @@
 	require_once("BamSessionHelper.php");
 	session_start();
   
+	$_SESSION['previousPage'] = "BamActivity.php";
 	$_SESSION['Topic'] = $_GET['Activity'];
 	$_SESSION['Level'] = 3;
 	require_once('BamHeader.php');

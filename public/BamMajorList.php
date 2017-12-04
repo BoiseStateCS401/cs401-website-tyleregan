@@ -1,7 +1,8 @@
 <?php
 	require_once("BamSessionHelper.php");
 	session_start();
-  
+	
+	$_SESSION['previousPage'] = "BamMajorList.php";
 	$_SESSION['Category'] = "Major";
 	$_SESSION['Level'] = 2;
 	require_once('BamHeader.php');

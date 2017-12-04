@@ -5,7 +5,7 @@
 		clearErrors();
 	}
   
-	$_SESSION['previousPage'] = "BamSignUp";
+	$_SESSION['previousPage'] = "BamSignUp.php";
 	require_once('BamHeader.php');
 ?>
 

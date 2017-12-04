@@ -4,18 +4,21 @@
 	session_start();
 	$dao = new Dao();
   
+	$_SESSION['previousPage'] = "BamActivityThreadList.php";
 	$_SESSION['Topic'] = $_GET['Activity'];
 	$_SESSION['List'] = $_GET['List'];
 	$_SESSION['Level'] = 4;
 	require_once('BamHeader.php');
 	require_once('BamForumNavBar.php');
-?>
 	
+	if($_SESSION['user'] !== "Guest"){
+?>
 		<section class = "CreateThread">
 			<h4>
 				<a href="BamCreateThread.php">Create Thread</a>
 			</h4>
 		</section>
+<?php } ?>
 	
 		<section class = "Threads">
 			<ul>
@@ -24,7 +27,15 @@
 					foreach($result as $row) {
 						$Thread = $row['thread'];
 					?>
-					<a href="BamPosts.php?Thread=<?php echo $Thread ?>"><?php echo $Thread?></a>
+					<a href="BamPosts.php?Thread=<?php echo $Thread ?>&Type=Main"><?php echo $Thread?></a>
+					<?php }	?>
+				</li>
+				<li>
+					<?php $result = $dao->getThreads($_SESSION['Topic'], $_SESSION['List']);
+					foreach($result as $row) {
+						$Thread = $row['thread'];
+					?>
+					<a href="BamPosts.php?Thread=<?php echo $Thread ?>&Type=Normal"><?php echo $Thread?></a>
 					<?php }	?>
 				</li>
 			</ul>

@@ -3,6 +3,7 @@
 	require_once("BamSessionHelper.php");
 	session_start();
   
+	$_SESSION['previousPage'] = "BamMajorThreadList.php";
 	$_SESSION['Topic'] = $_GET['Major'];
 	$_SESSION['List'] = $_GET['List'];
 	$_SESSION['Level'] = 4;
@@ -13,12 +14,15 @@
 	
 	require_once('BamHeader.php');
 	require_once('BamForumNavBar.php');
+	
+	if($_SESSION['user'] !== "Guest"){
 ?>
 		<section class = "CreateThread">
 			<h4>
 				<a href="BamCreateThread.php">Create Thread</a>
 			</h4>
 		</section>
+<?php } ?>
 	
 		<section class = "Threads">
 			<ul>

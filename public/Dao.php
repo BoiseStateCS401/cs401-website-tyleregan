@@ -33,6 +33,27 @@ class Dao
 	}
 	
 	/**
+	 * Adds a new post to the database.
+	 */
+	public function addPost($table, $subTopic, $thread, $poster, $date, $content)
+	{
+		$conn = $this->getConnection();
+		//Placeholder
+		$query = "INSERT INTO (:table) (subTopic, thread, poster, postDate, postContent) VALUES ((:subTopic), (:thread), (:poster), (:date), (:post))";
+		//Statement
+		$stmt = $conn->prepare($query);
+		//Bind
+		$stmt->bindParam("table", $table);
+		$stmt->bindParam("subTopic", $subTopic);
+		$stmt->bindParam("thread", $thread);
+		$stmt->bindParam("poster", $poster);
+		$stmt->bindParam("date", $date);
+		$stmt->bindParam("content", $content);
+		//Execute
+		$stmt->execute();
+	}
+	
+	/**
 	 * Adds a new user to the database.
 	 */
 	public function addUser($email, $password, $name)
@@ -174,7 +195,7 @@ class Dao
 	}
 	
 	/**
-	* Returns the threads for this table/topic and subtopic.
+	* Returns the threads for this table and subtopic.
 	*/
 	public function getThreads($table, $subTopic)
 	{
@@ -184,7 +205,7 @@ class Dao
 		//Statement
 		$stmt = $conn->prepare($query);
 		//Bind
-		$stmt->bindParam("table", $topic);
+		$stmt->bindParam("table", $table);
 		$stmt->bindParam("subTopic", $subTopic);
 		//Execute
 		$stmt->execute();

@@ -41,6 +41,7 @@
 	if($valid){
 		$Title = $dao->getUserTitle($email);
 		$_SESSION['user'] = $Title[0];
+		$_SESSION['name'] = substr($email, 0, strlen($email) - 17);
 		clearErrors();
 		header('Location: BamHome.php');
 	} else {

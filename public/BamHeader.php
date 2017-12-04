@@ -11,7 +11,8 @@
 		<aside class="Profile">
 			<nav>
 				<p>
-				<?php if(checkLogin() === "Guest"){ ?>
+				<?php $_SESSION['user'] = checkLogin();
+				if(checkLogin() === "Guest"){ ?>
 					<a href="BamHome.php">Home</a> &nbsp;
 					<a href="BamLogin.php">Login</a> &nbsp;
 					<a href="BamSignUp.php">Sign Up</a>

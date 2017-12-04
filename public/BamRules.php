@@ -2,6 +2,7 @@
 	require_once("BamSessionHelper.php");
 	session_start();
   
+	$_SESSION['previousPage'] = "BamRules.php";
 	$_SESSION['Thread'] = "Rules for Posts";
 	$_SESSION['Level'] = 5;
 	require_once('BamHeader.php');
