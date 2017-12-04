@@ -72,24 +72,6 @@ class Dao
 	}
 	
 	/**
-	* Returns the abbreviation/table name for the provided topic.
-	*/
-	public function getAbbr($Topic)
-	{
-		$conn = $this->getConnection();
-		//Placeholder
-		$query = "SELECT abbr FROM Topics WHERE name = (:topic)";
-		//Statement
-		$stmt = $conn->prepare($query);
-		//Bind
-		$stmt->bindParam("topic", $Topic);
-		//Execute
-		$stmt->execute();
-		//Return
-		return $stmt->fetch();
-	}
-	
-	/**
 	* Checks if the email exists.
 	*/
 	public function checkEmail($Email)
@@ -139,6 +121,24 @@ class Dao
 			return 1;
 		}
 		return 0; //Something wasn't right, return 0 (false)
+	}
+	
+	/**
+	* Returns the abbreviation/table name for the provided topic.
+	*/
+	public function getAbbr($Topic)
+	{
+		$conn = $this->getConnection();
+		//Placeholder
+		$query = "SELECT abbr FROM Topics WHERE name = (:topic)";
+		//Statement
+		$stmt = $conn->prepare($query);
+		//Bind
+		$stmt->bindParam("topic", $Topic);
+		//Execute
+		$stmt->execute();
+		//Return
+		return $stmt->fetch();
 	}
 	
 	/**

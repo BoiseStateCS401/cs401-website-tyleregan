@@ -42,7 +42,7 @@
 		}
 	} else if($_SESSION['Type'] === "Normal")
 	{
-		$result = $dao->getPosts($_SESSION[$_SESSION['Category']], $_SESSION['Thread']);
+		$result = $dao->getPosts($_SESSION['Abbr'], $_SESSION['Thread']);
 		foreach($result as $row) {
 			$_SESSION['poster'] = $row['poster'];
 			$_SESSION['postDate'] = $row['postDate'];

@@ -2,12 +2,16 @@
 	require_once("BamSessionHelper.php");
 	require_once("Dao.php");
 	session_start();
-	$dao = new Dao();
   
 	$_SESSION['previousPage'] = "BamActivityThreadList.php";
-	$_SESSION['Topic'] = $_GET['Activity'];
-	$_SESSION['List'] = $_GET['List'];
+	$_SESSION['Table'] = $_GET['Activity'];
+	$_SESSION['subTopic'] = $_GET['List'];
 	$_SESSION['Level'] = 4;
+	
+	$dao = new Dao();
+	$result = $dao->getAbbr($_SESSION['Table']);
+	$_SESSION['Abbr'] = $result[0];
+	
 	require_once('BamHeader.php');
 	require_once('BamForumNavBar.php');
 	
@@ -31,7 +35,7 @@
 					<?php }	?>
 				</li>
 				<li>
-					<?php $result = $dao->getThreads($_SESSION['Topic'], $_SESSION['List']);
+					<?php $result = $dao->getThreads($_SESSION['Abbr'], $_SESSION['subTopic']);
 					foreach($result as $row) {
 						$Thread = $row['thread'];
 					?>
@@ -40,7 +44,6 @@
 				</li>
 			</ul>
 		</section>
-	
 <?php
     require_once('BamFooter.php');
 ?>
