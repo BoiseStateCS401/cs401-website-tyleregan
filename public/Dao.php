@@ -39,16 +39,15 @@ class Dao
 	{
 		$conn = $this->getConnection();
 		//Placeholder
-		$query = "INSERT INTO (:table) (subTopic, thread, poster, postDate, postContent) VALUES ((:subTopic), (:thread), (:poster), (:date), (:post))";
+		$query = "INSERT INTO $table (subTopic, thread, poster, postDate, postContent) VALUES ((:subTopic), (:thread), (:poster), (:date), (:content))";
 		//Statement
 		$stmt = $conn->prepare($query);
 		//Bind
-		$stmt->bindParam("table", $table);
-		$stmt->bindParam("subTopic", $subTopic);
-		$stmt->bindParam("thread", $thread);
-		$stmt->bindParam("poster", $poster);
-		$stmt->bindParam("date", $date);
-		$stmt->bindParam("content", $content);
+		$stmt->bindParam(":subTopic", $subTopic);
+		$stmt->bindParam(":thread", $thread);
+		$stmt->bindParam(":poster", $poster);
+		$stmt->bindParam(":date", $date);
+		$stmt->bindParam(":content", $content);
 		//Execute
 		$stmt->execute();
 	}
@@ -166,7 +165,7 @@ class Dao
 	{
 		$conn = $this->getConnection();
 		//Placeholder
-		$query = "SELECT thread FROM AllThreads";
+		$query = "SELECT DISTINCT thread FROM AllThreads";
 		//Statement
 		$stmt = $conn->prepare($query);
 		//Execute
@@ -182,11 +181,10 @@ class Dao
 	{
 		$conn = $this->getConnection();
 		//Placeholder
-		$query = "SELECT poster, postDate, postContent FROM (:table) WHERE thread = (:thread)";
+		$query = "SELECT poster, postDate, postContent FROM $table WHERE thread = (:thread)";
 		//Statement
 		$stmt = $conn->prepare($query);
 		//Bind
-		$stmt->bindParam("table", $topic);
 		$stmt->bindParam("thread", $thread);
 		//Execute
 		$stmt->execute();
@@ -201,12 +199,11 @@ class Dao
 	{
 		$conn = $this->getConnection();
 		//Placeholder
-		$query = "SELECT thread FROM (:table) WHERE subTopic = (:subTopic)";
+		$query = "SELECT DISTINCT thread FROM $table WHERE subTopic = :subTopic";
 		//Statement
 		$stmt = $conn->prepare($query);
 		//Bind
-		$stmt->bindParam("table", $table);
-		$stmt->bindParam("subTopic", $subTopic);
+		$stmt->bindParam(":subTopic", $subTopic);
 		//Execute
 		$stmt->execute();
 		//Return

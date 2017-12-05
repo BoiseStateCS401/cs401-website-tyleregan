@@ -10,7 +10,7 @@
 ?>
 		<section class="Topics">
 			<ul>
-				<li><a href="BamActivity.php?Activity=Archery`">Archery</a></li>
+				<li><a href="BamActivity.php?Activity=Archery">Archery</a></li>
 				<li><a href="BamActivity.php?Activity=Badminton">Badminton</a></li>
 				<li><a href="BamActivity.php?Activity=Ballet">Ballet</a></li>
 				<li><a href="BamActivity.php?Activity=Baseball">Baseball</a></li>

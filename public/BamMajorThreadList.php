@@ -26,22 +26,22 @@
 	
 		<section class = "Threads">
 			<ul>
-				<li>
-					<?php $result = $dao->getMainThreads();
+				<?php $result = $dao->getMainThreads();
 					foreach($result as $row) {
 						$Thread = $row['thread'];
 					?>
-					<a href="BamPosts.php?Thread=<?php echo $Thread ?>&Type=Main"><?php echo $Thread?></a>
-					<?php }	?>
-				</li>
-				<li>
-					<?php $result = $dao->getThreads($_SESSION['Abbr'], $_SESSION['subTopic']);
+					<li>
+						<a href="BamPosts.php?Thread=<?php echo $Thread ?>&Type=Main"><?php echo $Thread?></a>
+					</li>
+				<?php }	
+					$result = $dao->getThreads($_SESSION['Abbr'], $_SESSION['subTopic']);
 					foreach($result as $row) {
 						$Thread = $row['thread'];
 					?>
-					<a href="BamPosts.php?Thread=<?php echo $Thread ?>&Type=Normal"><?php echo $Thread?></a>
-					<?php }	?>
-				</li>
+					<li>
+						<a href="BamPosts.php?Thread=<?php echo $Thread ?>&Type=Normal"><?php echo $Thread?></a>
+					</li>
+				<?php }	?>
 			</ul>
 		</section>
 <?php

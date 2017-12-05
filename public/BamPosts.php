@@ -12,6 +12,14 @@
 	require_once('BamHeader.php');
 	require_once('BamForumNavBar.php');
 	
+	?>
+		<section class = "Title">
+			<p id = "MiniTitle">
+				<?php echo $_SESSION['Thread'] ?>
+			</p>
+		</section>
+	<?php
+		
 	if($_SESSION['Type'] === "Main")
 	{	
 		$result = $dao->getMainPosts($_SESSION['Thread']);
@@ -20,11 +28,6 @@
 			$_SESSION['postDate'] = $row['postDate'];
 			$_SESSION['postContent'] = $row['postContent'];
 ?>
-		<section class = "Title">
-			<p id = "MiniTitle">
-				<?php echo $_SESSION['Thread'] ?>
-			</p>
-		</section>
 		<section class = "Posts collapsible">
 			<section class = "PostHeader">
 				<p>
@@ -48,11 +51,6 @@
 			$_SESSION['postDate'] = $row['postDate'];
 			$_SESSION['postContent'] = $row['postContent'];
 	?>
-		<section class = "Title">
-			<p id = "MiniTitle">
-				<?php echo $_SESSION['Thread'] ?>
-			</p>
-		</section>
 		<section class = "Posts collapsible">
 			<section class = "PostHeader">
 				<p>
@@ -69,6 +67,8 @@
 		<?php
 		}
 	}
+	
+	if($_SESSION['user'] !== "Guest"){
 	?>
 		<section class="NewPost">
 			<form method="POST" action="BamPostHandler.php" autocomplete="off">
@@ -79,8 +79,8 @@
 				<input type="submit" value="Submit">
 			</form>
 		</section>
-	
 <?php
+	}
     require_once('BamFooter.php');
 ?>
 
