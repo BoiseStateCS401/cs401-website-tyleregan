@@ -3,14 +3,14 @@
 	require_once("Dao.php");
 	session_start();
   
-	$_SESSION['previousPage'] = "BamActivityThreadList.php";
-	$_SESSION['Table'] = $_GET['Activity'];
+	$_SESSION['currentPage'] = "BamActivityThreadList.php";
+	$_SESSION['table'] = $_GET['Activity'];
 	$_SESSION['subTopic'] = $_GET['List'];
-	$_SESSION['Level'] = 4;
+	$_SESSION['level'] = 4;
 	
 	$dao = new Dao();
-	$result = $dao->getAbbr($_SESSION['Table']);
-	$_SESSION['Abbr'] = $result[0];
+	$result = $dao->getAbbr($_SESSION['table']);
+	$_SESSION['abbr'] = $result[0];
 	
 	require_once('BamHeader.php');
 	require_once('BamForumNavBar.php');
@@ -28,18 +28,18 @@
 			<ul>
 				<?php $result = $dao->getMainThreads();
 					foreach($result as $row) {
-						$Thread = $row['thread'];
+						$thread = $row['thread'];
 					?>
 						<li>
-							<a href="BamPosts.php?Thread=<?php echo $Thread ?>&Type=Main"><?php echo $Thread?></a>
+							<a href="BamPosts.php?Thread=<?php echo $thread ?>&Type=Main"><?php echo $thread?></a>
 						</li>	
 				<?php }
-					$result = $dao->getThreads($_SESSION['Abbr'], $_SESSION['subTopic']);
+					$result = $dao->getThreads($_SESSION['abbr'], $_SESSION['subTopic']);
 					foreach($result as $row) {
-						$Thread = $row['thread'];
+						$thread = $row['thread'];
 				?>
 						<li>
-							<a href="BamPosts.php?Thread=<?php echo $Thread ?>&Type=Normal"><?php echo $Thread?></a>
+							<a href="BamPosts.php?Thread=<?php echo $thread ?>&Type=Normal"><?php echo $thread?></a>
 						</li>
 				<?php }	?>
 			</ul>

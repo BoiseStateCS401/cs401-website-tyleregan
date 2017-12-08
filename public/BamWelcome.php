@@ -2,7 +2,7 @@
 	require_once("BamSessionHelper.php");
 	session_start();
   
-	$_SESSION['previousPage'] = "BamWelcome.php";
+	$_SESSION['currentPage'] = "BamWelcome.php";
 	require_once('BamHeader.php');
 ?>
 		<section>

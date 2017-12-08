@@ -39,7 +39,7 @@ class Dao
 	{
 		$conn = $this->getConnection();
 		//Placeholder
-		$query = "INSERT INTO $table (subTopic, thread, poster, postDate, postContent) VALUES ((:subTopic), (:thread), (:poster), (:date), (:content))";
+		$query = "INSERT INTO $table (subTopic, thread, poster, postDate, postContent) VALUES (:subTopic, :thread, :poster, :date, :content)";
 		//Statement
 		$stmt = $conn->prepare($query);
 		//Bind
@@ -55,17 +55,18 @@ class Dao
 	/**
 	 * Adds a new user to the database.
 	 */
-	public function addUser($email, $password, $name)
+	public function addUser($email, $password, $name, $time)
 	{
 		$conn = $this->getConnection();
 		//Placeholder
-		$query = "INSERT INTO users (email, password, name, title, posts) VALUES ((:email), (:password), (:name), 'Member', '0')";
+		$query = "INSERT INTO users (email, password, name, role, posts, locked, lockedTime, attempts, attemptTime, profilePic) VALUES (:email, :password, :name, 'Member', '0', '0', :time, '0', :time, 'https://i.imgur.com/KZ0kR1R.png')";
 		//Statement
 		$stmt = $conn->prepare($query);
 		//Bind
-		$stmt->bindParam("email", $email);
-		$stmt->bindParam("password", $password);
-		$stmt->bindParam("name", $name);
+		$stmt->bindParam(":email", $email);
+		$stmt->bindParam(":password", $password);
+		$stmt->bindParam(":name", $name);
+		$stmt->bindParam(":time", $time);
 		//Execute
 		$stmt->execute();
 	}
@@ -73,7 +74,7 @@ class Dao
 	/**
 	* Checks if the email exists.
 	*/
-	public function checkEmail($Email)
+	public function checkEmail($email)
 	{
 		$conn = $this->getConnection();
 		//Placeholder
@@ -85,10 +86,10 @@ class Dao
 		//Return
 		$emails = $stmt->fetchall();
 		//Taken from resources
-		foreach ($emails as $email){
+		foreach ($emails as $emailCheck){
 			// recreate email object
 			//$email = unserialize($email);
-			if ($Email === $email['email']) {
+			if ($email === $emailCheck['email']) {
 				// user email found, return 1 (aka true)
 				return 1;
 			}
@@ -99,45 +100,60 @@ class Dao
 	/**
 	* Checks if the password corresponds to the email/user.
 	*/
-	public function checkPassword($Email, $Password)
+	public function checkPassword($email, $password)
 	{
 		$conn = $this->getConnection();
 		//Placeholder
-		$query = "SELECT password FROM Users WHERE email = (:email)";
+		$query = "SELECT password FROM Users WHERE email = :email";
 		//Statement
 		$stmt = $conn->prepare($query);
 		//Bind
-		$stmt->bindParam("email", $Email);
+		$stmt->bindParam(":email", $email);
 		//Execute
 		$stmt->execute();
 		//Return
 		$pass = $stmt->fetch();
-		//Taken from resources
-		// recreate password object
-		//$pass = unserialize($pass);
-		if ($Password == $pass['password']) {
-			// Passwords matched, return 1 (true)
+		//Compare passwords
+		if ($password == $pass['password']) {
 			return 1;
 		}
-		return 0; //Something wasn't right, return 0 (false)
+		return 0;
 	}
 	
 	/**
 	* Returns the abbreviation/table name for the provided topic.
 	*/
-	public function getAbbr($Topic)
+	public function getAbbr($topic)
 	{
 		$conn = $this->getConnection();
 		//Placeholder
-		$query = "SELECT abbr FROM Topics WHERE name = (:topic)";
+		$query = "SELECT abbr FROM Topics WHERE name = :topic";
 		//Statement
 		$stmt = $conn->prepare($query);
 		//Bind
-		$stmt->bindParam("topic", $Topic);
+		$stmt->bindParam(":topic", $topic);
 		//Execute
 		$stmt->execute();
 		//Return
 		return $stmt->fetch();
+	}
+	
+	/**
+	* Returns all items in that category.
+	*/
+	public function getCategories($category)
+	{
+		$conn = $this->getConnection();
+		//Placeholder
+		$query = "SELECT name FROM Topics WHERE category = :category";
+		//Statement
+		$stmt = $conn->prepare($query);
+		//Bind
+		$stmt->bindParam(":category", $category);
+		//Execute
+		$stmt->execute();
+		//Return
+		return $stmt->fetchAll();
 	}
 	
 	/**
@@ -147,11 +163,11 @@ class Dao
 	{
 		$conn = $this->getConnection();
 		//Placeholder
-		$query = "SELECT poster, postDate, postContent FROM AllThreads WHERE thread = (:thread)";
+		$query = "SELECT poster, postDate, postContent FROM AllThreads WHERE thread = :thread";
 		//Statement
 		$stmt = $conn->prepare($query);
 		//Bind
-		$stmt->bindParam("thread", $thread);
+		$stmt->bindParam(":thread", $thread);
 		//Execute
 		$stmt->execute();
 		//Return
@@ -181,11 +197,11 @@ class Dao
 	{
 		$conn = $this->getConnection();
 		//Placeholder
-		$query = "SELECT poster, postDate, postContent FROM $table WHERE thread = (:thread)";
+		$query = "SELECT poster, postDate, postContent FROM $table WHERE thread = :thread";
 		//Statement
 		$stmt = $conn->prepare($query);
 		//Bind
-		$stmt->bindParam("thread", $thread);
+		$stmt->bindParam(":thread", $thread);
 		//Execute
 		$stmt->execute();
 		//Return
@@ -213,15 +229,15 @@ class Dao
 	/**
 	* Returns the title for the provided email/user.
 	*/
-	public function getUserTitle($Email)
+	public function getUserRole($email)
 	{
 		$conn = $this->getConnection();
 		//Placeholder
-		$query = "SELECT title FROM Users WHERE email = (:email)";
+		$query = "SELECT role FROM Users WHERE email = :email";
 		//Statement
 		$stmt = $conn->prepare($query);
 		//Bind
-		$stmt->bindParam("email", $Email);
+		$stmt->bindParam(":email", $email);
 		//Execute
 		$stmt->execute();
 		//Return
@@ -229,12 +245,3 @@ class Dao
 	}
 	
 }
-
-
-
-
-
-
-
-
-

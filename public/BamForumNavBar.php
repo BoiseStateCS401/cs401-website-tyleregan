@@ -2,18 +2,18 @@
 			<ul>
 				<li class="history">
 					<a href="BamHome.php">Home</a>
-					<?php if($_SESSION['Level'] > 1){ ?>
+					<?php if($_SESSION['level'] > 1){ ?>
 					<strong>&lsaquo;<strong>
-					<a href="Bam<?php echo $_SESSION['Category'] ?>List.php"><?php echo $_SESSION['Category'] ?>List</a>
-					<?php if($_SESSION['Level'] > 2) { ?>
+					<a href="Bam<?php echo $_SESSION['category'] ?>List.php"><?php echo $_SESSION['category'] ?>List</a>
+					<?php if($_SESSION['level'] > 2) { ?>
 					<strong>&lsaquo;<strong>
-					<a href="Bam<?php echo $_SESSION['Category'] ?>.php?<?php echo $_SESSION['Category'] ?>=<?php echo $_SESSION['Table'] ?>"><?php echo $_SESSION['Table'] ?></a>
-					<?php if($_SESSION['Level'] > 3) { ?>
+					<a href="Bam<?php echo $_SESSION['category'] ?>.php?<?php echo $_SESSION['category'] ?>=<?php echo $_SESSION['table'] ?>"><?php echo $_SESSION['table'] ?></a>
+					<?php if($_SESSION['level'] > 3) { ?>
 					<strong>&lsaquo;<strong>
-					<a href="Bam<?php echo $_SESSION['Category'] ?>ThreadList.php?<?php echo $_SESSION['Category'] ?>=<?php echo $_SESSION['Table'] ?>&List=<?php echo $_SESSION['subTopic'] ?>"><?php echo $_SESSION['subTopic'] ?></a>
-					<?php if($_SESSION['Level'] > 4) { ?>
+					<a href="Bam<?php echo $_SESSION['category'] ?>ThreadList.php?<?php echo $_SESSION['category'] ?>=<?php echo $_SESSION['table'] ?>&List=<?php echo $_SESSION['subTopic'] ?>"><?php echo $_SESSION['subTopic'] ?></a>
+					<?php if($_SESSION['level'] > 4) { ?>
 					<strong>&lsaquo;<strong>
-					<a href="<?php echo $_SESSION['Thread'] ?>.php"><?php echo $_SESSION['Thread'] ?></a>
+					<a href="<?php echo $_SESSION['thread'] ?>.php"><?php echo $_SESSION['thread'] ?></a>
 					<?php }}}} ?>
 				</li>
 			</ul>

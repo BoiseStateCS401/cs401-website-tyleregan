@@ -6,8 +6,12 @@
   
 	
 	$_SESSION['previousPage'] = "BamPosts.php";
-	$_SESSION['Thread'] = $_GET['Thread'];
-	$_SESSION['Type'] = $_GET['Type'];
+	if(isset($_GET['Thread'])){
+		$_SESSION['Thread'] = $_GET['Thread'];
+	}
+	if(isset($_GET['Type'])){
+		$_SESSION['Type'] = $_GET['Type'];
+	}
 	$_SESSION['Level'] = 5;
 	require_once('BamHeader.php');
 	require_once('BamForumNavBar.php');

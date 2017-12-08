@@ -3,17 +3,17 @@
   require_once("Dao.php");
   $dao = new Dao();
 
-  //Get variables
-  $email = $_POST['email'];
+  //Get and clean variables.
+  $email = htmlspecialchars($_POST['email']);
   $username = substr($email, 0, strlen($email) - 17);
-  $password = $_POST['password'];
-  $passwordMatch = $_POST['passwordMatch'];
+  $password = htmlspecialchars($_POST['password']);
+  $passwordMatch = htmlspecialchars($_POST['passwordMatch']);
   $errors = array();
 
   //Initalize valid.
   $valid = 1;
 
-  //Check the email for requirements
+  //Check the email for requirements.
 	if(strpos($email, '@u.boisestate.edu') != (strlen($email) - 17)){
 		$errors['email'] = "Must be a boisestate student email.";
 		$valid = 0;
@@ -44,15 +44,19 @@
 		}
 	}
 
+	//If no problems, send to Welcome page.
 	if($valid){
-		$dao->addUser($email, $password, $username);
+		date_default_timezone_set('America/Boise');
+		$date = date('Y-m-d H:i:s');
+		$dao->addUser($email, $password, $username, $date);
 		$_SESSION['email'] = $email;
 		$_SESSION['password'] = $password;
 		$_SESSION['name'] = $username;
 		header('Location: BamWelcome.php');
-  } else {
-	$_SESSION['errors'] = $errors;
-	$_SESSION['presets']['email'] = htmlspecialchars($email);
-	header('Location: BamSignUp.php');
-  }
+	} else {
+	//Else go back to SignUp with errors and presets.
+		$_SESSION['errors'] = $errors;
+		$_SESSION['presets']['email'] = $email;
+		header('Location: BamSignUp.php');
+	}
 ?>

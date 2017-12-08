@@ -25,7 +25,7 @@
 		$date = date('Y-m-d H:i:s');
 		$dao->addPost($_SESSION['Abbr'], $_SESSION['subTopic'], $_SESSION['Thread'], $_SESSION['name'], $date, $post);
 		$_SESSION['previousPage'];
-		header('Location: BamHome.php'); //How do I go to the previous page?
+		header("Location:".$_SESSION['previousPage']); //How do I go to the previous page?
 	} else {
 		$_SESSION['errors'] = $errors;
 		header('Location: BamHome.php');
