@@ -33,13 +33,32 @@ class Dao
 	}
 	
 	/**
-	 * Adds a new post to the database.
+	 * Adds a new post to the AllThreads table.
+	 */
+	public function addMainPost($thread, $poster, $date, $content)
+	{
+		$conn = $this->getConnection();
+		//Placeholder
+		$query = "INSERT INTO AllThreads (thread, poster, postDate, postContent, postTLDR) VALUES (:thread, :poster, :date, :content, 'Not yet implemented')";
+		//Statement
+		$stmt = $conn->prepare($query);
+		//Bind
+		$stmt->bindParam(":thread", $thread);
+		$stmt->bindParam(":poster", $poster);
+		$stmt->bindParam(":date", $date);
+		$stmt->bindParam(":content", $content);
+		//Execute
+		$stmt->execute();
+	}
+	
+	/**
+	 * Adds a new post to the table $table.
 	 */
 	public function addPost($table, $subTopic, $thread, $poster, $date, $content)
 	{
 		$conn = $this->getConnection();
 		//Placeholder
-		$query = "INSERT INTO $table (subTopic, thread, poster, postDate, postContent) VALUES (:subTopic, :thread, :poster, :date, :content)";
+		$query = "INSERT INTO $table (subTopic, thread, poster, postDate, postContent, postTLDR) VALUES (:subTopic, :thread, :poster, :date, :content, 'Not yet implemented')";
 		//Statement
 		$stmt = $conn->prepare($query);
 		//Bind

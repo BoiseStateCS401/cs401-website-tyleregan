@@ -2,9 +2,9 @@
 	require_once("BamSessionHelper.php");
 	session_start();
   
-	$_SESSION['previousPage'] = "BamCreateThread.php";
-	$_SESSION['Thread'] = "BamCreateThread";
-	$_SESSION['Level'] = 5;
+	$_SESSION['currentPage'] = "BamCreateThread.php";
+	$_SESSION['thread'] = "BamCreateThread";
+	$_SESSION['level'] = 5;
 	require_once('BamHeader.php');
 	require_once('BamForumNavBar.php');
 ?>

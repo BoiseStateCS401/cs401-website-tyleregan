@@ -5,28 +5,28 @@
 	$dao = new Dao();
   
 	
-	$_SESSION['previousPage'] = "BamPosts.php";
+	$_SESSION['currentPage'] = "BamPosts.php";
 	if(isset($_GET['Thread'])){
-		$_SESSION['Thread'] = $_GET['Thread'];
+		$_SESSION['thread'] = $_GET['Thread'];
 	}
 	if(isset($_GET['Type'])){
-		$_SESSION['Type'] = $_GET['Type'];
+		$_SESSION['type'] = $_GET['Type'];
 	}
-	$_SESSION['Level'] = 5;
+	$_SESSION['level'] = 5;
 	require_once('BamHeader.php');
 	require_once('BamForumNavBar.php');
 	
 	?>
 		<section class = "Title">
 			<p id = "MiniTitle">
-				<?php echo $_SESSION['Thread'] ?>
+				<?php echo $_SESSION['thread'] ?>
 			</p>
 		</section>
 	<?php
 		
-	if($_SESSION['Type'] === "Main")
+	if($_SESSION['type'] === "Main")
 	{	
-		$result = $dao->getMainPosts($_SESSION['Thread']);
+		$result = $dao->getMainPosts($_SESSION['thread']);
 		foreach($result as $row) {
 			$_SESSION['poster'] = $row['poster'];
 			$_SESSION['postDate'] = $row['postDate'];
@@ -47,9 +47,9 @@
 		</section>
 	<?php
 		}
-	} else if($_SESSION['Type'] === "Normal")
+	} else if($_SESSION['type'] === "Normal")
 	{
-		$result = $dao->getPosts($_SESSION['Abbr'], $_SESSION['Thread']);
+		$result = $dao->getPosts($_SESSION['abbr'], $_SESSION['thread']);
 		foreach($result as $row) {
 			$_SESSION['poster'] = $row['poster'];
 			$_SESSION['postDate'] = $row['postDate'];

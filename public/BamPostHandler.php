@@ -7,7 +7,7 @@
     $post = $_POST['Post'];
     $tldr = $_POST['TLDR'];
 	if(isset($_POST['Thread'])){
-		$_SESSION['Thread'] = $_POST['Thread'];
+		$_SESSION['thread'] = $_POST['Thread'];
 	}
     $errors = array();
 
@@ -23,9 +23,13 @@
 	if($valid){
 		date_default_timezone_set('America/Boise');
 		$date = date('Y-m-d H:i:s');
-		$dao->addPost($_SESSION['Abbr'], $_SESSION['subTopic'], $_SESSION['Thread'], $_SESSION['name'], $date, $post);
-		$_SESSION['previousPage'];
-		header("Location:".$_SESSION['previousPage']); //How do I go to the previous page?
+		if($_SESSION['type'] === "Main"){
+			$dao->addMainPost($_SESSION['thread'], $_SESSION['name'], $date, $post);
+		} else {
+			$dao->addPost($_SESSION['abbr'], $_SESSION['subTopic'], $_SESSION['thread'], $_SESSION['name'], $date, $post);
+		}
+		$_SESSION['currentPage'];
+		header("Location: BamHome.php");
 	} else {
 		$_SESSION['errors'] = $errors;
 		header('Location: BamHome.php');
